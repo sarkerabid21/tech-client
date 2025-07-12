@@ -65,7 +65,7 @@ const ProductReview = () => {
 
                   <button
                     onClick={() => updateStatus(p._id, 'featured')}
-                    className="btn btn-sm btn-accent"
+                    className="btn cursor-pointer btn-sm btn-accent"
                     disabled={p.status === 'rejected'}
                   >
                     Make Featured

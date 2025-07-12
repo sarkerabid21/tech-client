@@ -19,7 +19,7 @@ const Pricing = () => {
 
   useEffect(() => {
     if (selectedAmount) {
-      fetch("http://localhost:5000/create-payment-intent", {
+      fetch("https://tech-server-blush.vercel.app/create-payment-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ amount: selectedAmount }),
@@ -142,7 +142,7 @@ const CheckoutForm = ({ onClose, clientSecret, userEmail }) => {
     } else {
       // Step: Verify user after payment success
       try {
-        const res = await fetch(`http://localhost:5000/api/users/verify/${userEmail}`, {
+        const res = await fetch(`https://tech-server-blush.vercel.app/api/users/verify/${userEmail}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
         });

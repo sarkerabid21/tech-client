@@ -5,7 +5,7 @@ import useUserRole from '../hooks/useUserRole';
 // import { Outlet } from 'react-router';
 
 const DashBoardLayout = () => {
-     const { role, isAdmin, isModerator, loading } = useUserRole();
+     const { role, loading } = useUserRole();
     //  console.log(role)
   return (
     <div className="drawer lg:drawer-open">
@@ -47,6 +47,7 @@ const DashBoardLayout = () => {
         <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
           {/* Sidebar content here */}
            <TechLogo></TechLogo>
+           <li><NavLink to="/">Home</NavLink></li>
           <li><NavLink to="myProfile" className={({ isActive }) => isActive ? "font-bold text-primary" : ""}>My Profile Page</NavLink></li>
           <li><NavLink to="addProduct" className={({ isActive }) => isActive ? "font-bold text-primary" : ""}>AddProduct</NavLink></li>
           <li><NavLink to="myProduct" className={({ isActive }) => isActive ? "font-bold text-primary" : ""}>My Product</NavLink></li>

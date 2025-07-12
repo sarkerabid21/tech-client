@@ -8,7 +8,7 @@ const Statistic = () => {
   const [stats, setStats] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/stats") // 🛠️ Replace with your actual endpoint
+    axios.get("https://tech-server-blush.vercel.app/api/stats") // 🛠️ Replace with your actual endpoint
       .then((res) => setStats(res.data))
       .catch((err) => console.error("Error fetching stats:", err));
   }, []);

@@ -21,12 +21,12 @@ const ProductDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/products/${id}`)
+      .get(`https://tech-server-blush.vercel.app/api/products/${id}`)
       .then((res) => setProduct(res.data))
       .catch(() => navigate("/404"));
 
     axios
-      .get(`http://localhost:5000/api/reviews/${id}`)
+      .get(`https://tech-server-blush.vercel.app/api/reviews/${id}`)
       .then((res) => setReviews(res.data))
       .catch((err) => console.error("Error fetching reviews:", err));
   }, [id, navigate]);
@@ -37,7 +37,7 @@ const ProductDetails = () => {
 
     try {
       const res = await axios.patch(
-        `http://localhost:5000/api/upvote/${id}`,
+        `https://tech-server-blush.vercel.app/api/upvote/${id}`,
         { email: user.email },
         { headers: { "Content-Type": "application/json" } }
       );
@@ -57,7 +57,7 @@ const ProductDetails = () => {
     const { _id, ...restProduct } = product;
 
     try {
-      const response = await axios.post("http://localhost:5000/api/report", {
+      const response = await axios.post("https://tech-server-blush.vercel.app/api/report", {
         ...restProduct,
         originalProductId: _id,
         reportedBy: {
@@ -146,11 +146,11 @@ const ProductDetails = () => {
         };
 
         try {
-          await axios.post("http://localhost:5000/api/reviews", reviewData);
+          await axios.post("https://tech-server-blush.vercel.app/api/reviews", reviewData);
           Swal.fire("Success!", "Your review has been submitted.", "success");
 
           // Refresh reviews
-          const res = await axios.get(`http://localhost:5000/api/reviews/${id}`);
+          const res = await axios.get(`https://tech-server-blush.vercel.app/api/reviews/${id}`);
           setReviews(res.data);
         } catch (error) {
           Swal.fire("Error!", "Failed to submit review.", "error");

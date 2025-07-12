@@ -54,11 +54,13 @@ const Footer = () => {
     </div>
   </nav>
 </footer> */}
- <footer className="bg-gray-900 text-white">
+ <footer className="bg-blue-700 text-white">
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <TechLogo></TechLogo>
+            <div className="text-2xl font-bold text-pink-200 pacifico-regular" >
+              NextGenTech
+            </div>
             <p className="text-gray-400 max-w-md">
               Discover and share the best tech products. From AI tools to mobile apps, find everything you need to stay ahead in technology.
             </p>
@@ -68,12 +70,12 @@ const Footer = () => {
             <h3 className="font-semibold mb-4">Product</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/products" className="text-gray-400 hover:text-white transition-colors cursor-pointer">
+                <Link href="/productPage" className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                   Browse Products
                 </Link>
               </li>
               <li>
-                <Link href="/submit" className="text-gray-400 hover:text-white transition-colors cursor-pointer">
+                <Link href="/dashboard/addProduct" className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                   Submit Product
                 </Link>
               </li>
@@ -112,18 +114,18 @@ const Footer = () => {
             © 2025 TechHunt. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors cursor-pointer">
+            <a href="https://www.facebook.com/" className="text-gray-400 hover:text-white transition-colors cursor-pointer">
               <div className="w-5 h-5 flex items-center justify-center">
                 <FaFacebook />
               </div>
             </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors cursor-pointer">
+            <a href="https://github.com/Programming-Hero-Web-Course4/b11a12-server-side-sarkerabid21" className="text-gray-400 hover:text-white transition-colors cursor-pointer">
               <div className="w-5 h-5 flex items-center justify-center">
                <FaGithub />
 
               </div>
             </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors cursor-pointer">
+            <a href="https://www.linkedin.com/" className="text-gray-400 hover:text-white transition-colors cursor-pointer">
               <div className="w-5 h-5 flex items-center justify-center">
                 <FaLinkedin />
 

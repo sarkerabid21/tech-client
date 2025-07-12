@@ -14,7 +14,7 @@ const TrendingProducts = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/trending-products")
+      .get("https://tech-server-blush.vercel.app/api/trending-products")
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("Error fetching trending products:", err));
   }, []);
@@ -29,7 +29,7 @@ const TrendingProducts = () => {
 
     try {
       const res = await axios.patch(
-        `http://localhost:5000/api/upvote/${productId}`,
+        `https://tech-server-blush.vercel.app/api/upvote/${productId}`,
         { email: user.email },
         { headers: { "Content-Type": "application/json" } }
       );

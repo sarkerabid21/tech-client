@@ -35,7 +35,7 @@ const Navbar = () => {
       <div className="navbar-start">
         <Link to="/" className="flex items-center gap-2 text-xl font-bold text-indigo-700 hover:text-indigo-900">
           <TechLogo />
-          <span className="hidden sm:inline">AppOrbit</span>
+         
         </Link>
       </div>
 

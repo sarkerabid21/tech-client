@@ -5,14 +5,16 @@ const TopContributors = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/top-contributors")
+    axios.get("https://tech-server-blush.vercel.app/api/top-contributors")
       .then(res => setUsers(res.data))
       .catch(err => console.error("Error fetching top contributors:", err));
   }, []);
 
+
+
   return (
     <div className="bg-pink-100 px-6 py-12 lg:py-10 lg:px-26">
-      <h2 className="text-3xl font-bold text-center text-indigo-700 mb-10">
+      <h2 className="text-3xl font-bold text-center text-pink-700 mb-10">
         🏆 Top Contributors
       </h2>
 

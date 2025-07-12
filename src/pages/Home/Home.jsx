@@ -4,8 +4,8 @@ import Banner from './Banner/Banner';
 // import OurServices from './Services/OurServices';
 // import Marquee from './Marquee/Marquees';
 import Marquees from './Marquee/Marquees';
-import BenifitsCard from './Benifits/BenifitsCard';
-import BeMarchant from './BeMarchant/BeMarchant';
+// import BenifitsCard from './Benifits/BenifitsCard';
+// import BeMarchant from './BeMarchant/BeMarchant';
 import FeaturedProducts from './FeaturedProducts/FeaturedProducts';
 import TrendingProducts from './TrendingProducts/TrendingProducts';
 import TopContributors from './TopContributors/TopContributors';
@@ -24,8 +24,8 @@ const Home = () => {
             
            
             <Marquees></Marquees>
-            <BenifitsCard></BenifitsCard>
-            <BeMarchant></BeMarchant>
+            {/* <BenifitsCard></BenifitsCard> */}
+            {/* <BeMarchant></BeMarchant> */}
         </div>
     );
 };

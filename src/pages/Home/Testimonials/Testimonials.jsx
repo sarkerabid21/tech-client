@@ -24,9 +24,9 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section className="relative z-10 bg-gradient-to-br from-[#f0f4ff] to-[#ffffff] py-16 px-4 sm:px-8">
+    <section className="relative z-10 bg-pink-100 px-6 py-12 lg:py-10 lg:px-26">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold text-center text-[#1e2a45] mb-12">
+        <h2 className="text-4xl font-bold text-center text-pink-700 mb-12">
           💬 User Experiences
         </h2>
 

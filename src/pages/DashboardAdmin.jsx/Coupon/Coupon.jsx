@@ -15,7 +15,7 @@ const Coupon = () => {
   // Fetch coupons from backend
   const fetchCoupons = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/coupons');
+      const res = await axios.get('https://tech-server-blush.vercel.app/coupons');
       setCoupons(res.data);
     } catch (error) {
       console.error('Fetch error:', error);
@@ -34,10 +34,10 @@ const Coupon = () => {
     e.preventDefault();
     try {
       if (editingId) {
-        await axios.put(`http://localhost:5000/coupons/${editingId}`, formData);
+        await axios.put(`https://tech-server-blush.vercel.app/coupons/${editingId}`, formData);
         Swal.fire('Updated!', 'Coupon updated successfully.', 'success');
       } else {
-        await axios.post('http://localhost:5000/coupons', formData);
+        await axios.post('https://tech-server-blush.vercel.app/coupons', formData);
         Swal.fire('Saved!', 'Coupon added successfully.', 'success');
       }
       setFormData({ code: '', expiry: '', description: '', discount: '' });
@@ -51,7 +51,7 @@ const Coupon = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/coupons/${id}`);
+      await axios.delete(`https://tech-server-blush.vercel.app/coupons/${id}`);
       fetchCoupons();
       Swal.fire('Deleted!', 'Coupon removed.', 'success');
     } catch (err) {

@@ -162,7 +162,7 @@ const AddProduct = () => {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary w-full text-lg">
+          <button type="submit" className="btn btn-primary w-full cursor-pointer text-lg">
              Submit Product
           </button>
         </form>

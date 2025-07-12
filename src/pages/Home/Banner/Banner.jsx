@@ -81,13 +81,13 @@ const Banner = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              to="/discover"
+              to="/productPage"
               className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition "
             >
               Start Exploring
             </Link>
             <Link
-              to="/submit"
+              to="/dashboard/addProduct"
               className="bg-white text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
             >
               Submit Your Product

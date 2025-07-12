@@ -16,7 +16,7 @@ const ReportedContent = () => {
 
   const fetchReports = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/reported-products");
+      const res = await axios.get("https://tech-server-blush.vercel.app/api/reported-products");
       setReports(res.data);
     } catch (error) {
       console.error("Error fetching reported products:", error);
@@ -34,7 +34,7 @@ const ReportedContent = () => {
 
     if (confirm.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:5000/api/reported-products/${id}`);
+        await axios.delete(`https://tech-server-blush.vercel.app/api/reported-products/${id}`);
         setReports(reports.filter((item) => item._id !== id));
         Swal.fire("Deleted!", "The product has been removed.", "success");
       } catch (error) {

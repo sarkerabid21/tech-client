@@ -15,13 +15,14 @@ const SocialLogin = () => {
 
       const userInfo = {
         name: user.displayName,
+        role: 'user',
         email: user.email,
         photoURL: user.photoURL,
         status: "unverified",
       };
 
       // MongoDB তে save করো
-      await axios.post("http://localhost:5000/api/users", userInfo);
+      await axios.post("https://tech-server-blush.vercel.app/api/users", userInfo);
 
       // তারপর redirect করো home/dashboard এ
       navigate("/");
@@ -35,7 +36,7 @@ const SocialLogin = () => {
       <p>OR</p>
       <button
         onClick={handleGoogleSignIn}
-        className="btn bg-red-500 text-white border-[#e5e5e5] w-full"
+        className="btn cursor-pointer bg-red-500 text-white border-[#e5e5e5] w-full"
       >
         <FcGoogle className='text-xl mr-2' />
         Login with Google

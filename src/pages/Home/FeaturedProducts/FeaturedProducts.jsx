@@ -13,7 +13,7 @@ const FeaturedProducts = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/featured-products")
+      .get("https://tech-server-blush.vercel.app/api/featured-products")
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("Error fetching featured products:", err));
   }, []);
@@ -28,7 +28,7 @@ const FeaturedProducts = () => {
 
     try {
       const res = await axios.patch(
-        `http://localhost:5000/api/upvote/${productId}`,
+        `https://tech-server-blush.vercel.app/api/upvote/${productId}`,
         { email: user.email },
         { headers: { "Content-Type": "application/json" } }
       );

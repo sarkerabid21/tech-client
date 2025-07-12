@@ -23,7 +23,7 @@ const Register = () => {
         status: "unverified"
       };
 
-      await axios.post("http://localhost:5000/api/users", userInfo);
+      await axios.post("https://tech-server-blush.vercel.app/api/users", userInfo);
       console.log("Saved to MongoDB");
 
       navigate('/'); // optional redirect
@@ -95,7 +95,7 @@ const Register = () => {
           }
         </div>
        
-        <button className="btn btn-primary w-full">Register</button>
+        <button className="btn btn-primary w-full cursor-pointer">Register</button>
         <p>Already have an account.Go to<NavLink to='/login' className='text-blue-800 font-bold underline'> login </NavLink>page</p>
         <SocialLogin></SocialLogin>
       </form>

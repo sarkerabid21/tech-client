@@ -46,7 +46,7 @@ const Login = () => {
         <div className="text-right">
           <a className="link link-hover text-sm">Forgot password?</a>
         </div>
-        <button className="btn btn-neutral w-full">Login</button>
+        <button className="cursor-pointer btn btn-neutral w-full">Login</button>
         <p>
           New to this website? Go to <a href="/register" className="text-blue-800 font-bold underline">register</a> page
         </p>

@@ -57,7 +57,7 @@ const ManageUsers = () => {
                   {user.role !== 'moderator' && (
                     <button
                       onClick={() => handleRoleChange(user.email, 'moderator')}
-                      className="btn btn-sm btn-info"
+                      className="btn btn-sm btn-info cursor-pointer"
                     >
                       Make Moderator
                     </button>
@@ -65,7 +65,7 @@ const ManageUsers = () => {
                   {user.role !== 'admin' && (
                     <button
                       onClick={() => handleRoleChange(user.email, 'admin')}
-                      className="btn btn-sm btn-success"
+                      className="btn btn-sm btn-success cursor-pointer"
                     >
                       Make Admin
                     </button>

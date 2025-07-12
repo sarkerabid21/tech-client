@@ -21,7 +21,7 @@ const ProductPage = () => {
 
   const fetchProducts = () => {
     axios
-      .get(`http://localhost:5000/api/products/accepted`, {
+      .get(`https://tech-server-blush.vercel.app/api/products/accepted`, {
         params: { search, page }
       })
       .then((res) => {
@@ -37,7 +37,7 @@ const ProductPage = () => {
 
     try {
       const res = await axios.patch(
-        `http://localhost:5000/api/upvote/${productId}`,
+        `https://tech-server-blush.vercel.app/api/upvote/${productId}`,
         { email: user.email },
         { headers: { "Content-Type": "application/json" } }
       );
@@ -61,7 +61,7 @@ const ProductPage = () => {
   const { _id, ...restProduct } = product;
 
   try {
-    const res = await axios.post("http://localhost:5000/api/report", {
+    const res = await axios.post("https://tech-server-blush.vercel.app/api/report", {
       ...restProduct,
       originalProductId: _id,
       reportedBy: {
@@ -87,7 +87,7 @@ const ProductPage = () => {
     <div className="py-10 bg-conic-180 from-indigo-600 via-indigo-50 to-indigo-600 px-4 lg:py-10 lg:px-24">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl font-bold text-center mb-10 text-indigo-700">
-          All Accepted Products
+          All Products
         </h2>
 
         <div className="mb-6 text-center">
