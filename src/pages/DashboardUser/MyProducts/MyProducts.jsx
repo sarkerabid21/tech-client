@@ -10,7 +10,7 @@ const MyProduct = () => {
   const navigate = useNavigate();
   const [myProducts, setMyProducts] = useState([]);
 
-  // Fetch products by current user's email
+ 
   useEffect(() => {
     if (user?.email) {
       axiosSecure

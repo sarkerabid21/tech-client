@@ -21,7 +21,8 @@ const ModeratorDashboard = () => {
       <h2 className="text-3xl font-bold text-center mb-6">🛡️ Moderator Dashboard</h2>
 
       <div className="bg-white shadow rounded-lg p-6">  
-        <p className="text-gray-600 text-2xl font-bold">{data.email}</p>
+         <p className="font-bold text-2xl">Name: {user.displayName}</p>
+        <p className="text-gray-600 ">{data.email}</p>
         <p className="text-sm mt-1">Role: <span className="text-purple-600 font-semibold">{data.role}</span></p>
       </div>
 

@@ -3,10 +3,11 @@ import { FaUserCircle, FaEdit } from 'react-icons/fa';
 import useDashboardData from '../../hooks/useDashboardData';
 import loadingLottie from '../../assets/loading.json';
 import Lottie from 'lottie-react';
+import useAuth from '../../hooks/useAuth';
 
 const UserDashboard = () => {
   const { data, loading } = useDashboardData();
-
+const { user } = useAuth();
   if (loading) return <Lottie className='w-40 mx-auto' animationData={loadingLottie} loop />;
 
   const {  email, role, stats} = data || {};
@@ -19,7 +20,7 @@ const UserDashboard = () => {
       <div className="bg-white shadow rounded-lg p-6 flex items-center gap-4">
         
         <div>
-          
+           <p className="font-bold text-2xl">Name: {user.displayName}</p>
           <p className="text-gray-600 text-2xl font-bold">{email}</p>
           <p className="text-sm mt-1">
             Role: <span className="font-medium text-blue-600">{role}</span>
