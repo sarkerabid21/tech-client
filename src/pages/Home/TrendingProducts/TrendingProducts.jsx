@@ -3,8 +3,7 @@ import axios from "axios";
 import { FaArrowUp } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
 import { Link, useNavigate } from "react-router";
-// import { Link, useNavigate } from "react-router-dom";
-// import useAuth from "../../../hooks/useAuth";
+
 
 const TrendingProducts = () => {
   const [products, setProducts] = useState([]);
