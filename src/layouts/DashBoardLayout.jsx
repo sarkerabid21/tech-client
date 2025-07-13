@@ -2,16 +2,16 @@ import React from 'react';
 import TechLogo from '../pages/shared/TechLogo/TechLogo';
 import { NavLink, Outlet } from 'react-router';
 import useUserRole from '../hooks/useUserRole';
-// import { Outlet } from 'react-router';
+
 
 const DashBoardLayout = () => {
      const { role, loading } = useUserRole();
-    //  console.log(role)
+   
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       
-      {/* Page Content */}
+     
       <div className="drawer-content flex flex-col">
         {/* Navbar */}
         <div className="navbar lg:hidden bg-base-300 w-full px-4">
@@ -37,7 +37,7 @@ const DashBoardLayout = () => {
         </div>
         <Outlet></Outlet>
 
-        {/* Page body content here */}
+      
        
       </div>
 
@@ -45,7 +45,7 @@ const DashBoardLayout = () => {
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-          {/* Sidebar content here */}
+         
            <TechLogo></TechLogo>
            <li><NavLink to="/">Home</NavLink></li>
           <li><NavLink to="myProfile" className={({ isActive }) => isActive ? "font-bold text-primary" : ""}>My Profile Page</NavLink></li>
