@@ -17,7 +17,7 @@ const AuthLayout = () => {
          <div className='mb-8'>
         <TechLogo></TechLogo>
       </div>
-      <div className='lg:p-20 p-10'>
+      <div className='lg:p-20 '>
  <Outlet />
       </div>
          

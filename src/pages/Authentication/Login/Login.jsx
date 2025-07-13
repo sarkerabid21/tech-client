@@ -23,7 +23,7 @@ const Login = () => {
       })
       .catch(error => {
         console.error(error.message);
-        toast.error(`🚫 ${error.message}`, {
+        toast.error(` ${error.message}`, {
           position: "top-right",
           autoClose: 3000,
         });
@@ -31,7 +31,7 @@ const Login = () => {
   };
 
   return (
-    <div className="w-full max-w-sm mx-auto">
+    <div className="lg:w-full   mx-auto">
       <h1 className="text-4xl font-bold text-neutral mb-6">Login now!</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>
@@ -53,7 +53,7 @@ const Login = () => {
         <SocialLogin />
       </form>
 
-      {/* 🟢 Toast Container */}
+      {/*  Toast Container */}
       <ToastContainer />
     </div>
   );
