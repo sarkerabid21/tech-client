@@ -21,7 +21,7 @@ const { user } = useAuth();
         
         <div>
            <p className="font-bold text-2xl">Name: {user.displayName}</p>
-          <p className="text-gray-600 text-2xl font-bold">{email}</p>
+          <p className="text-gray-600 ">{email}</p>
           <p className="text-sm mt-1">
             Role: <span className="font-medium text-blue-600">{role}</span>
           </p>
