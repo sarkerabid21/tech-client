@@ -22,15 +22,15 @@ const AdminDashboard = () => {
     return <span className="loading loading-spinner text-primary"></span>
   }
 
-  const { name, role, stats, recentUsers } = dashboardData;
+  const {  role, stats, recentUsers } = dashboardData;
 
   return (
     <div className="bg-linear-to-r from-blue-600 to-sky-400 min-h-screen  p-4">
       <h2 className="text-3xl font-bold mb-6 text-center">🛠️ Admin Dashboard</h2>
 
       <div className="bg-white p-4 shadow rounded-md mb-6">
-        
-        <p className="text-gray-600 font-bold text-2xl">{user.email}</p>
+        <p className="font-bold text-2xl">Name: {user.displayName}</p>
+        <p className="text-gray-600 ">{user.email}</p>
         <p className="text-sm text-blue-600">Role: {role}</p>
       </div>
 
