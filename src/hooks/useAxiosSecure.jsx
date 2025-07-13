@@ -2,8 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useNavigate } from 'react-router';
 import useAuth from './useAuth';
-// import useAuth from './useAuth';
-// import { useNavigate } from 'react-router';
+
 
 const axiosSecure = axios.create({
     baseURL: `https://tech-server-blush.vercel.app/`

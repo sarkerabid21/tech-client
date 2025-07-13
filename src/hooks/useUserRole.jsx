@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import useAuth from "./useAuth"; // ⬅️ Replace path as needed
-import useAxiosSecure from "./useAxiosSecure"; // ⬅️ Your provided axios instance
-
+import useAuth from "./useAuth"; 
+import useAxiosSecure from "./useAxiosSecure"; 
 const useUserRole = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();

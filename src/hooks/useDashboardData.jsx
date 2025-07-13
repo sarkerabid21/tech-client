@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import useAuth from './useAuth'; // your auth context
+import useAuth from './useAuth'; 
 import useAxiosSecure from './useAxiosSecure';
 
 const useDashboardData = () => {
