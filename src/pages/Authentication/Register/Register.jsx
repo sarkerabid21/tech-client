@@ -26,30 +26,12 @@ const Register = () => {
       await axios.post("https://tech-server-blush.vercel.app/api/users", userInfo);
       console.log("Saved to MongoDB");
 
-      navigate('/'); // optional redirect
+      navigate('/'); 
     } catch (error) {
       console.error("Error registering:", error);
     }
   };
-//      const {
-//     register,
-//     handleSubmit,
-//     formState: { errors },
-//   } = useForm()
-//   const {createUser}= useAuth()
-//    const onSubmit = data =>{
-//     console.log(data)
-//    createUser(data.email, data.password, data.name,data.photo)
-//    .then(
-//     result =>{
-//         console.log(result.user)
-//     }
-//    )
-//    .catch(error => {
-//     console.error(error)
-//    })
 
-// } 
 
   return (
     <div className="w-full max-w-sm mx-auto">
