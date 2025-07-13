@@ -194,7 +194,7 @@ const ProductDetails = () => {
           <button
             onClick={handleUpvote}
             disabled={user?.email === product.ownerEmail || hasVoted}
-            className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-lg flex items-center gap-2 hover:scale-105 transition disabled:opacity-50"
+            className="cursor-pointer  bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-lg flex items-center gap-2 hover:scale-105 transition disabled:opacity-50"
           >
             <FaArrowUp />
             {product.upvotes} Upvote{product.upvotes !== 1 && "s"}

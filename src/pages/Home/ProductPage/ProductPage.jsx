@@ -141,7 +141,7 @@ const ProductPage = () => {
                 <div className="mt-4 flex justify-between items-center gap-2">
                   <button
                     onClick={() => handleUpvote(product._id)}
-                    className="bg-gradient-to-r from-purple-600 to-pink-500 text-white py-2 px-4 rounded-lg shadow-md hover:scale-105 transition disabled:opacity-50 flex items-center gap-2"
+                    className="cursor-pointer bg-gradient-to-r from-purple-600 to-pink-500 text-white py-2 px-4 rounded-lg shadow-md hover:scale-105 transition disabled:opacity-50 flex items-center gap-2"
                     disabled={isOwner || hasVoted}
                   >
                     <FaArrowUp /> {product.upvotes} Upvote{product.upvotes !== 1 && "s"}

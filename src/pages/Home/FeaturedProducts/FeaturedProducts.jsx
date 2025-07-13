@@ -95,7 +95,7 @@ const FeaturedProducts = () => {
           : "bg-gradient-to-r from-blue-500 to-indigo-600 text-white hover:from-blue-600 hover:to-indigo-700"
       }`}
   >
-    <FaArrowUp className="text-white text-base" />
+    <FaArrowUp className=" text-white text-base" />
     <span>{product.upvotes} Upvote{product.upvotes !== 1 && "s"}</span>
   </button>
 </div>

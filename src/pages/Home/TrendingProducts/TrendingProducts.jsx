@@ -88,7 +88,7 @@ const TrendingProducts = () => {
               <button
                 onClick={() => handleUpvote(product._id)}
                 disabled={isOwner || hasVoted}
-                className={`cursor-pointer mt-auto bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-full flex items-center justify-center gap-3 shadow-lg font-semibold hover:scale-105 transition-transform duration-200 disabled:opacity-50`}
+                className={`cursor-pointer  mt-auto bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-full flex items-center justify-center gap-3 shadow-lg font-semibold hover:scale-105 transition-transform duration-200 disabled:opacity-50`}
               >
                 <FaArrowUp className="text-white" />
                 {product.upvotes} Upvote{product.upvotes !== 1 && "s"}
