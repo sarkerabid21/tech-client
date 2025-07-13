@@ -1,8 +1,8 @@
-// ✅ FRONTEND: ReportedContent.jsx
+
 import React, { useEffect, useState } from "react";
 import { FaTrash, FaEye } from "react-icons/fa";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
+
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
 
