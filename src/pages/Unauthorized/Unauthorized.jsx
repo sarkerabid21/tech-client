@@ -1,7 +1,7 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+//
 import Lottie from 'lottie-react';
-import lockAnimation from '../../assets/Secure.json'; // 🔐 Optional animation
+import lockAnimation from '../../assets/Secure.json'; 
 import { Link } from 'react-router';
 
 const Unauthorized = () => {

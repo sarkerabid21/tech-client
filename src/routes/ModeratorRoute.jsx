@@ -6,9 +6,9 @@ import useUserRole from '../hooks/useUserRole';
 
 const ModeratorRoute = ({ children }) => {
   const { user, loading: authLoading } = useAuth();
-  const { role, loading: roleLoading } = useUserRole(); // ✅ Use role loading too
+  const { role, loading: roleLoading } = useUserRole(); 
 
-  const isLoading = authLoading || roleLoading; // ✅ Combined loading state
+  const isLoading = authLoading || roleLoading;
 
   if (isLoading) {
     return <Lottie className='my-10' animationData={loadingLottie} loop={true} />;
