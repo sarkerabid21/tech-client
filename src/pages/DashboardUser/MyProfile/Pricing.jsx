@@ -8,7 +8,7 @@ import {
 } from "@stripe/react-stripe-js";
 import useAuth from "../../../hooks/useAuth";
 
-// Load Stripe with your public key
+
 const stripePromise = loadStripe(import.meta.env.VITE_payment_Key);
 
 const Pricing = () => {
@@ -132,7 +132,7 @@ const CheckoutForm = ({ onClose, clientSecret, userEmail }) => {
 
     const card = elements.getElement(CardElement);
 
-    const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+    const { error } = await stripe.confirmCardPayment(clientSecret, {
       payment_method: { card },
     });
 
@@ -151,12 +151,12 @@ const CheckoutForm = ({ onClose, clientSecret, userEmail }) => {
         if (res.ok) {
           console.log("✅ User verified:", data);
           onClose();
-          window.location.href = "/myProfile"; // ✅ redirect
+          window.location.href = "/myProfile"; 
         } else {
           setErrorMsg("Verification failed: " + (data.error || ""));
         }
       } catch (err) {
-        setErrorMsg("Server error during verification");
+        setErrorMsg("Server error during verification",err);
       } finally {
         setProcessing(false);
       }
