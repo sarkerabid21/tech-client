@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
-// import { Link } from 'react-router-dom'; // ✅ correct import
+
 import { Link } from 'react-router';
 const ProductReview = () => {
   const axiosSecure = useAxiosSecure();
@@ -28,7 +28,7 @@ const ProductReview = () => {
         );
       }
     } catch (error) {
-      Swal.fire("❌ Error", "Something went wrong!", "error");
+      Swal.fire("❌ Error", "Something went wrong!", error);
     }
   };
 
