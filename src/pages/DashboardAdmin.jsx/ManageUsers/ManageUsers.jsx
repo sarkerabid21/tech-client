@@ -24,7 +24,7 @@ const ManageUsers = () => {
       const res = await axiosSecure.patch(`/api/users/role/${email}`, { role: newRole });
       if (res.data.modifiedCount > 0) {
         Swal.fire('Success!', `User is now a ${newRole}`, 'success');
-        fetchUsers(); // Refresh user list
+        fetchUsers();
       }
     } catch (error) {
       console.error("Role update failed:", error);

@@ -39,6 +39,7 @@ const Statistic = () => {
             outerRadius={120}
             label
           >
+            
             {pieData.map((entry, index) => (
               <Cell key={index} fill={COLORS[index % COLORS.length]} />
             ))}
@@ -46,6 +47,7 @@ const Statistic = () => {
           <Tooltip />
           <Legend verticalAlign="bottom" height={36} />
         </PieChart>
+
       </ResponsiveContainer>
     </div>
   );
