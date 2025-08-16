@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
-
 import { Link } from 'react-router';
+
 const ProductReview = () => {
   const axiosSecure = useAxiosSecure();
   const [products, setProducts] = useState([]);
@@ -33,9 +33,13 @@ const ProductReview = () => {
   };
 
   return (
-    <div className="p-6 min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-100">
-      <h2 className="text-4xl font-bold text-center mb-8 text-gray-800">🧾 Product Review</h2>
-      <div className="overflow-x-auto rounded-xl">
+    <div className="p-4 sm:p-6 min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-100">
+      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-6 text-gray-800">
+        🧾 Product Review
+      </h2>
+
+      {/* Desktop Table */}
+      <div className="hidden md:block overflow-x-auto rounded-xl">
         <table className="table w-full shadow-xl rounded-3xl bg-white">
           <thead className="bg-gray-400 text-gray-100 text-sm uppercase tracking-wide">
             <tr>
@@ -48,8 +52,8 @@ const ProductReview = () => {
           <tbody>
             {products.map((p, i) => (
               <tr key={p._id} className="hover:bg-gray-50 transition-all">
-                <td className="text-center">{i + 1}</td>
-                <td>{p.productName}</td>
+                <td className="text-center dark:text-pink-500">{i + 1}</td>
+                <td className='dark:text-pink-500'>{p.productName}</td>
                 <td>
                   <span className={`badge 
                     ${p.status === 'pending' && 'badge-warning'}
@@ -62,7 +66,6 @@ const ProductReview = () => {
                 </td>
                 <td className="flex flex-wrap gap-2 justify-center">
                   <Link to={`/product/${p._id}`} className="btn btn-sm btn-info">View</Link>
-
                   <button
                     onClick={() => updateStatus(p._id, 'featured')}
                     className="btn cursor-pointer btn-sm btn-accent"
@@ -70,7 +73,6 @@ const ProductReview = () => {
                   >
                     Make Featured
                   </button>
-
                   <button
                     onClick={() => updateStatus(p._id, 'accepted')}
                     className="btn btn-sm btn-success"
@@ -78,7 +80,6 @@ const ProductReview = () => {
                   >
                     Accept
                   </button>
-
                   <button
                     onClick={() => updateStatus(p._id, 'rejected')}
                     className="btn btn-sm btn-error"
@@ -98,6 +99,53 @@ const ProductReview = () => {
             )}
           </tbody>
         </table>
+      </div>
+
+      {/* Mobile Card View */}
+      <div className="md:hidden space-y-4">
+        {products.length > 0 ? (
+          products.map((p, i) => (
+            <div key={p._id} className="bg-white shadow-md rounded-xl p-4">
+              <div className="flex justify-between items-center mb-2">
+                <h3 className="font-semibold text-lg">{p.productName}</h3>
+                <span className={`badge 
+                  ${p.status === 'pending' && 'badge-warning'}
+                  ${p.status === 'accepted' && 'badge-success'}
+                  ${p.status === 'featured' && 'badge-info'}
+                  ${p.status === 'rejected' && 'badge-error'} 
+                  capitalize`}>
+                  {p.status}
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <Link to={`/product/${p._id}`} className="btn btn-xs btn-info">View</Link>
+                <button
+                  onClick={() => updateStatus(p._id, 'featured')}
+                  className="btn btn-xs btn-accent"
+                  disabled={p.status === 'rejected'}
+                >
+                  Featured
+                </button>
+                <button
+                  onClick={() => updateStatus(p._id, 'accepted')}
+                  className="btn btn-xs btn-success"
+                  disabled={p.status === 'accepted' || p.status === 'rejected'}
+                >
+                  Accept
+                </button>
+                <button
+                  onClick={() => updateStatus(p._id, 'rejected')}
+                  className="btn btn-xs btn-error"
+                  disabled={p.status === 'rejected' || p.status === 'accepted'}
+                >
+                  Reject
+                </button>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p className="text-center text-gray-500">No products available.</p>
+        )}
       </div>
     </div>
   );

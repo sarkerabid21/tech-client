@@ -31,6 +31,21 @@ const ProductPage = () => {
       .catch((err) => console.error("Error fetching accepted products:", err));
   };
 
+  // 🆕 Sort Functions
+  const sortAscending = () => {
+    const sorted = [...products].sort((a, b) =>
+      a.productName.localeCompare(b.productName)
+    );
+    setProducts(sorted);
+  };
+
+  const sortDescending = () => {
+    const sorted = [...products].sort((a, b) =>
+      b.productName.localeCompare(a.productName)
+    );
+    setProducts(sorted);
+  };
+
   const handleUpvote = async (productId) => {
     if (!user) return navigate("/login");
     if (votedProducts.includes(productId)) return;
@@ -56,32 +71,34 @@ const ProductPage = () => {
   };
 
   const handleReport = async (product) => {
-  if (!user) return navigate("/login");
+    if (!user) return navigate("/login");
 
-  const { _id, ...restProduct } = product;
+    const { _id, ...restProduct } = product;
 
-  try {
-    const res = await axios.post("https://tech-server-blush.vercel.app/api/report", {
-      ...restProduct,
-      originalProductId: _id,
-      reportedBy: {
-        email: user.email,
-        name: user.displayName,
-        photoURL: user.photoURL,
-      },
-      reportType: "product",
-      reportedAt: new Date(),
-    });
+    try {
+      const res = await axios.post(
+        "https://tech-server-blush.vercel.app/api/report",
+        {
+          ...restProduct,
+          originalProductId: _id,
+          reportedBy: {
+            email: user.email,
+            name: user.displayName,
+            photoURL: user.photoURL,
+          },
+          reportType: "product",
+          reportedAt: new Date(),
+        }
+      );
 
-    if (res.data.insertedId) {
-      Swal.fire("✅ Report Submitted!", "Admin will review it.", "success");
+      if (res.data.insertedId) {
+        Swal.fire("✅ Report Submitted!", "Admin will review it.", "success");
+      }
+    } catch (error) {
+      console.error("Error submitting report:", error);
+      Swal.fire("❌ Error", "Could not report this product", "error");
     }
-  } catch (error) {
-    console.error("Error submitting report:", error);
-    Swal.fire("❌ Error", "Could not report this product", "error");
-  }
-};
-
+  };
 
   return (
     <div className="py-10 bg-conic-180 from-indigo-600 via-indigo-50 to-indigo-600 px-4 lg:py-10 lg:px-24">
@@ -90,19 +107,36 @@ const ProductPage = () => {
           All Products
         </h2>
 
-        <div className="mb-6 text-center">
+        {/* Search & Sort Buttons */}
+        <div className="mb-6 flex flex-col sm:flex-row justify-center items-center gap-4">
           <input
             type="text"
             placeholder="Search by tag..."
-            className="input input-bordered w-full rounded-3xl  max-w-md"
+            className="input input-bordered w-full rounded-3xl max-w-md"
             value={search}
             onChange={(e) => {
               setSearch(e.target.value);
               setPage(1);
             }}
           />
+
+          <div className="flex gap-2">
+            <button
+              onClick={sortAscending}
+              className="px-4 py-2 cursor-pointer bg-gradient-to-r from-indigo-600 to-pink-500 text-white rounded-lg shadow hover:bg-green-600 transition"
+            >
+              A → Z
+            </button>
+            <button
+              onClick={sortDescending}
+              className="px-4 cursor-pointer py-2 bg-gradient-to-r from-pink-500 to-indigo-600 text-white rounded-lg shadow hover:bg-red-600 transition"
+            >
+              Z → A
+            </button>
+          </div>
         </div>
 
+        {/* Product Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product) => {
             const isOwner = user?.email === product.ownerEmail;
@@ -120,7 +154,9 @@ const ProductPage = () => {
                 />
 
                 <h3 className="text-lg font-bold mt-4 hover:text-indigo-600 transition">
-                  <Link to={`/product/${product._id}`}>{product.productName}</Link>
+                  <Link to={`/product/${product._id}`}>
+                    {product.productName}
+                  </Link>
                 </h3>
 
                 <p className="text-gray-600 mt-2 text-sm">
@@ -144,12 +180,13 @@ const ProductPage = () => {
                     className="cursor-pointer bg-gradient-to-r from-purple-600 to-pink-500 text-white py-2 px-4 rounded-lg shadow-md hover:scale-105 transition disabled:opacity-50 flex items-center gap-2"
                     disabled={isOwner || hasVoted}
                   >
-                    <FaArrowUp /> {product.upvotes} Upvote{product.upvotes !== 1 && "s"}
+                    <FaArrowUp /> {product.upvotes} Upvote
+                    {product.upvotes !== 1 && "s"}
                   </button>
 
                   <a
-                    href={product.externalLink}
-                    target="_blank"
+                    href="/resume"
+                    // target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-500 underline text-sm"
                   >
@@ -177,11 +214,13 @@ const ProductPage = () => {
           >
             Prev
           </button>
-          <span className="text-lg font-semibold">Page {page} of {totalPages}</span>
+          <span className="text-lg font-semibold">
+            Page {page} of {totalPages}
+          </span>
           <button
             disabled={page === totalPages}
             onClick={() => setPage((p) => p + 1)}
-            className="btn btn-outline rounded-full font-bold bg-amber-100"
+            className="btn border- btn-outline rounded-full font-bold bg-amber-100"
           >
             Next
           </button>

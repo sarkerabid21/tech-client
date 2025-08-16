@@ -49,7 +49,7 @@ const FeaturedProducts = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-indigo-600 to-blue-500 lg:py-10 lg:px-26  px-6 py-12">
+    <div className="bg-gradient-to-r from-indigo-600 to-blue-500  lg:py-10 lg:px-26  px-6 py-12">
       <h2 className="lg:text-4xl text-2xl text-amber-100 font-bold text-center mb-8"> Featured Products</h2>
 
       <div  data-aos="fade-right"  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -72,6 +72,7 @@ const FeaturedProducts = () => {
     {product.productName}
   </Link>
 </h3>
+<p className="text-gray-600 flex-grow">{product.description.substring(0, 90)}...</p>
 
               <div className="flex flex-wrap gap-2 mt-3">
                 {product.tags?.map((tag, index) => (

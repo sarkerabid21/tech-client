@@ -8,7 +8,7 @@ const Error = () => {
         <div className="relative  w-full max-w-xl mx-auto">
   <Lottie className='w-full' animationData={errorLottie} loop={true} />
   <div className="absolute left-50 flex justify-center items-center">
-    <Link to='/' className='btn bg-amber-400 font-bold rounded-2xl'>
+    <Link to='/' className='btn bg-pink-600 text-white font-bold rounded-2xl'>
       Back to your Home
     </Link>
   </div>

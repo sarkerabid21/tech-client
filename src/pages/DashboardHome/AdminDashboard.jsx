@@ -3,6 +3,13 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { FaUserShield } from "react-icons/fa";
 import { MdReport, MdReviews, MdOutlineProductionQuantityLimits } from "react-icons/md";
+import { Doughnut } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { motion } from "framer-motion";
+import CountUp from "react-countup";
+
+// Register Chart.js modules
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const AdminDashboard = () => {
   const { user } = useAuth();
@@ -16,45 +23,85 @@ const AdminDashboard = () => {
         .then((res) => setDashboardData(res.data))
         .catch((err) => console.error("Admin dashboard error:", err));
     }
-  }, [user, axiosSecure]);
+  }, [user?.email, axiosSecure]);
 
   if (!dashboardData) {
-    return <span className="loading loading-spinner text-primary"></span>
+    return <span className="loading loading-spinner text-primary"></span>;
   }
 
-  const {  role, stats, recentUsers } = dashboardData;
+  const { role, stats, recentUsers } = dashboardData;
+
+  const getChartData = (value, color) => ({
+    labels: ["Count", "Remaining"],
+    datasets: [
+      {
+        data: [value || 0, 100 - (value || 0)],
+        backgroundColor: [color, "#e5e7eb"],
+        borderWidth: 0
+      }
+    ]
+  });
+
+  const chartOptions = {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        enabled: true,
+        callbacks: {
+          label: function (context) {
+            const label = context.label || "";
+            const value = context.raw;
+            return `${label}: ${value}%`;
+          }
+        }
+      }
+    },
+    cutout: "70%"
+  };
+
+  const statItems = [
+    { label: "Total Users", value: stats.totalUsers, color: "#3b82f6", icon: <FaUserShield className="mx-auto text-3xl text-blue-600" /> },
+    { label: "Total Products", value: stats.totalProducts, color: "#facc15", icon: <MdOutlineProductionQuantityLimits className="mx-auto text-3xl text-yellow-600" /> },
+    { label: "Total Reviews", value: stats.totalReviews, color: "#22c55e", icon: <MdReviews className="mx-auto text-3xl text-green-600" /> },
+    { label: "Reports", value: stats.reportedCount, color: "#f87171", icon: <MdReport className="mx-auto text-3xl text-red-600" /> }
+  ];
 
   return (
-    <div className="bg-linear-to-r from-blue-600 to-sky-400 min-h-screen  p-4">
-      <h2 className="text-3xl font-bold mb-6 text-center">🛠️ Admin Dashboard</h2>
+    <div className="bg-gradient-to-r from-blue-600 to-sky-400 min-h-screen p-4">
+      <h2 className="text-3xl font-bold mb-6 text-center text-white drop-shadow-lg">🛠️ Admin Dashboard</h2>
 
-      <div className="bg-white p-4 shadow rounded-md mb-6">
-        <p className="font-bold text-2xl">Name: {user.displayName}</p>
-        <p className="text-gray-600 ">{user.email}</p>
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="bg-white shadow rounded-lg p-6 mb-6"
+      >
+        <p className="font-bold text-2xl dark:text-black">Name: {user.displayName}</p>
+        <p className="text-gray-600">{user.email}</p>
         <p className="text-sm text-blue-600">Role: {role}</p>
-      </div>
+      </motion.div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-        <div className="bg-blue-100 p-4 rounded shadow text-center">
-          <p className="text-gray-600">Total Users</p>
-          <p className="text-2xl font-bold">{stats.totalUsers}</p>
-          <FaUserShield className="mx-auto text-3xl text-blue-600" />
-        </div>
-        <div className="bg-yellow-100 p-4 rounded shadow text-center">
-          <p className="text-gray-600">Total Products</p>
-          <p className="text-2xl font-bold">{stats.totalProducts}</p>
-          <MdOutlineProductionQuantityLimits className="mx-auto text-3xl text-yellow-600" />
-        </div>
-        <div className="bg-green-100 p-4 rounded shadow text-center">
-          <p className="text-gray-600">Total Reviews</p>
-          <p className="text-2xl font-bold">{stats.totalReviews}</p>
-          <MdReviews className="mx-auto text-3xl text-green-600" />
-        </div>
-        <div className="bg-red-100 p-4 rounded shadow text-center">
-          <p className="text-gray-600">Reports</p>
-          <p className="text-2xl font-bold">{stats.reportedCount}</p>
-          <MdReport className="mx-auto text-3xl text-red-600" />
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+        {statItems.map((item, idx) => (
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 + idx * 0.1 }}
+            className="bg-white p-4 rounded-lg text-center shadow"
+          >
+            <Doughnut
+              data={getChartData(item.value, item.color)}
+              options={chartOptions}
+            />
+            <div className="mt-2">{item.icon}</div>
+            <p className="text-gray-600 font-medium">{item.label}</p>
+            <p className="text-2xl font-bold">
+              <CountUp end={item.value || 0} duration={1.5} />
+            </p>
+          </motion.div>
+        ))}
       </div>
 
       <div className="bg-white p-4 shadow rounded">

@@ -47,7 +47,7 @@ const Login = () => {
           <a className="link link-hover text-sm">Forgot password?</a>
         </div>
         <button className="cursor-pointer btn btn-neutral w-full">Login</button>
-        <p>
+        <p className='dark:text-black'>
           New to this website? Go to <a href="/register" className="text-blue-800 font-bold underline">register</a> page
         </p>
         <SocialLogin />

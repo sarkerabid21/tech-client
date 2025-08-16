@@ -12,11 +12,13 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 import Aos from 'aos';
 import AuthProvider from './contexts/AuthProvider.jsx';
 import { Toaster } from 'react-hot-toast';
+import { ThemeProvider } from './pages/shared/Navbar/ThemeContext.jsx';
 // ..
 Aos.init();
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <ThemeProvider>
     <div className=' font-urbanist '>
  <AuthProvider>
   <>
@@ -25,6 +27,6 @@ createRoot(document.getElementById('root')).render(
    <Toaster position="top-right" reverseOrder={false} />
  </AuthProvider>
     </div>
-   
+   </ThemeProvider>
   </StrictMode>,
 )

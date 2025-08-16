@@ -25,6 +25,10 @@ import Unauthorized from "../pages/Unauthorized/Unauthorized";
 import AdminRoute from "../routes/AdminRoute";
 import ModeratorRoute from "../routes/ModeratorRoute";
 import DashboardHome from "../pages/DashboardHome/DashboardHome";
+import ComingSoon from "../pages/Home/ProductPage/ComingSoon";
+import ComingFeature from "../pages/Home/ProductPage/ComingFeature";
+import FAQHeader from "../pages/Home/FaqHeader";
+// import FAQHeader from "../pages/Home/FAQHeader";
 
 // import Coverage from "../Coverage/Coverage";
 
@@ -49,6 +53,19 @@ export const router = createBrowserRouter([
       {
     path: "/productPage",  // fixed typo here
     element: <ProductPage />,
+  },
+      {
+    path: "/comingsoon",  // fixed typo here
+    element: <ComingSoon/>,
+  },
+      {
+    path: "/faq",  // fixed typo here
+    element: <FAQHeader/>,
+  },
+  
+      {
+    path: "/coming",  // fixed typo here
+    element: <ComingFeature/>,
   },
       {
     path: "/unauthorized",  // fixed typo here
